@@ -1,0 +1,490 @@
+//QUESTION 2ND PART 'A'
+//Code for C++ & time taken to calculate
+
+#include <iostream>
+#include <vector>
+#include <chrono>
+
+using namespace std;
+using namespace std::chrono;
+
+void matrixMultiplication(int N) {
+    
+    vector<vector<int>> A(N, vector<int>(N, 1));
+    vector<vector<int>> B(N, vector<int>(N, 1));
+    vector<vector<int>> C(N, vector<int>(N, 0));
+
+   
+    auto start = high_resolution_clock::now();
+    for (int i = 0; i < N; ++i) {
+        for (int j = 0; j < N; ++j) {
+            for (int k = 0; k < N; ++k) {
+                C[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+
+    cout << "Time taken for N = " << N << ": " << duration.count() << " microseconds" << endl;
+}
+
+int main() {
+    vector<int> sizes = {64, 128, 256, 512, 1024};
+
+    for (int N : sizes) {
+        matrixMultiplication(N);
+    }
+
+    return 0;
+}
+
+//Code for C++ & time taken to calculate for double
+
+#include <iostream>
+#include <vector>
+#include <chrono>
+
+using namespace std;
+using namespace std::chrono;
+
+void matrixMultiplication(int N) {
+    
+    vector<vector<double>> A(N, vector<double>(N, 1));
+    vector<vector<double>> B(N, vector<double>(N, 1));
+    vector<vector<double>> C(N, vector<double>(N, 0));
+
+   
+    auto start = high_resolution_clock::now();
+    for (int i = 0; i < N; ++i) {
+        for (int j = 0; j < N; ++j) {
+            for (int k = 0; k < N; ++k) {
+                C[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+
+    cout << "Time taken for N = " << N << ": " << duration.count() << " microseconds" << endl;
+}
+
+int main() {
+    vector<int> sizes = {64, 128, 256, 512, 1024};
+
+    for (int N : sizes) {
+        matrixMultiplication(N);
+    }
+
+    return 0;
+}
+
+
+#Code for Python & time taken to calculate
+
+import numpy as np
+import time
+
+def matrix_multiplication(N):
+    
+    A = np.ones((N, N), dtype=int)
+    B = np.ones((N, N), dtype=int)
+    C = np.zeros((N, N), dtype=int)
+
+
+    start = time.time()
+    for i in range(N):
+        for j in range(N):
+            for k in range(N):
+                C[i][j] += A[i][k] * B[k][j]
+    end = time.time()
+
+    print(f"Time taken for N = {N}: {end - start} seconds")
+
+sizes = [64, 128, 256, 512, 1024]
+
+    for N in sizes:
+        matrix_multiplication(N)
+#for double
+import numpy as np
+import time
+
+def matrix_multiplication(N):
+    
+    A = np.ones((N, N), dtype=int)*2
+    B = np.ones((N, N), dtype=int)*2
+    C = np.zeros((N, N), dtype=int)*2
+
+
+    start = time.time()
+    for i in range(N):
+        for j in range(N):
+            for k in range(N):
+                C[i][j] += A[i][k] * B[k][j]
+    end = time.time()
+
+    print(f"Time taken for N = {N}: {end - start} seconds")
+
+
+sizes = [64, 128, 256, 512, 1024]
+
+for N in sizes:
+    matrix_multiplication(N)
+
+#QUESTION 2 PART 2:
+#code for python
+import numpy as np
+import time
+total_start=time.time()
+def matrix_multiplication(N):
+    
+    A = np.ones((N, N), dtype=int)
+    B = np.ones((N, N), dtype=int)
+    C = np.zeros((N, N), dtype=int)
+
+
+    meat_start = time.time()
+    for i in range(N):
+        for j in range(N):
+            for k in range(N):
+                C[i][j] += A[i][k] * B[k][j]
+    meat_end = time.time()
+    total_end = time.time()
+    print(f"Meat Time taken for N = {N}: {meat_end - meat_start} seconds")
+    print(f"Total Time taken for N = {N}: {total_end - total_start} seconds")
+    print(f"Proporation of Time taken for N = {N}: {((meat_end - meat_start)/(total_end - total_start))*100} %")
+
+sizes = [64, 128, 256, 512, 1024]
+
+for N in sizes:
+    matrix_multiplication(N)
+
+#for double
+import numpy as np
+import time
+total_start=time.time()
+def matrix_multiplication(N):
+    
+    A = np.ones((N, N), dtype=int)*2
+    B = np.ones((N, N), dtype=int)*2
+    C = np.zeros((N, N), dtype=int)*2
+
+
+    meat_start = time.time()
+    for i in range(N):
+        for j in range(N):
+            for k in range(N):
+                C[i][j] += A[i][k] * B[k][j]
+    meat_end = time.time()
+    total_end = time.time()
+    print(f"Meat Time taken for N = {N}: {meat_end - meat_start} seconds")
+    print(f"Total Time taken for N = {N}: {total_end - total_start} seconds")
+    print(f"Proporation of Time taken for N = {N}: {((meat_end - meat_start)/(total_end - total_start))*100} %")
+
+sizes = [64, 128, 256, 512, 1024]
+
+for N in sizes:
+    matrix_multiplication(N)
+
+//code for C++ 
+//Code for C++ & time taken to calculate
+
+#include <iostream>
+#include <vector>
+#include <chrono>
+
+using namespace std;
+using namespace std::chrono;
+auto total_start = high_resolution_clock::now();
+void matrixMultiplication(int N) {
+    
+    vector<vector<int>> A(N, vector<int>(N, 1));
+    vector<vector<int>> B(N, vector<int>(N, 1));
+    vector<vector<int>> C(N, vector<int>(N, 0));
+
+   
+    auto meat_start = high_resolution_clock::now();
+    for (int i = 0; i < N; ++i) {
+        for (int j = 0; j < N; ++j) {
+            for (int k = 0; k < N; ++k) {
+                C[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+    auto meat_stop = high_resolution_clock::now();
+    auto total_stop = high_resolution_clock::now();
+
+    auto meat = duration_cast<microseconds>(meat_stop - meat_start);
+    auto total = duration_cast<microseconds>(total_stop - total_start);
+    double prop = ((meat.count()/total.count())*100);
+
+
+    cout << "Time taken for N = " << N << ": " << meat.count() << " microseconds" << endl;
+    cout << "Time taken for N = " << N << ": " << total.count() << " microseconds" << endl;
+    cout << "Time taken for N = " << N << ": " << prop << " %" << endl;
+}
+
+int main() {
+    vector<int> sizes = {64, 128, 256, 512, 1024};
+
+    for (int N : sizes) {
+        matrixMultiplication(N);
+    }
+
+    return 0;
+}
+
+//for double:
+//Code for C++ & time taken to calculate
+
+#include <iostream>
+#include <vector>
+#include <chrono>
+
+using namespace std;
+using namespace std::chrono;
+auto total_start = high_resolution_clock::now();
+void matrixMultiplication(int N) {
+    
+    vector<vector<double>> A(N, vector<double>(N, 1));
+    vector<vector<double>> B(N, vector<double>(N, 1));
+    vector<vector<double>> C(N, vector<double>(N, 0));
+
+   
+    auto meat_start = high_resolution_clock::now();
+    for (int i = 0; i < N; ++i) {
+        for (int j = 0; j < N; ++j) {
+            for (int k = 0; k < N; ++k) {
+                C[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+    auto meat_stop = high_resolution_clock::now();
+    auto total_stop = high_resolution_clock::now();
+
+    auto meat = duration_cast<microseconds>(meat_stop - meat_start);
+    auto total = duration_cast<microseconds>(total_stop - total_start);
+    double prop = ((meat.count()/total.count())*100);
+
+
+    cout << "Time taken for N = " << N << ": " << meat.count() << " microseconds" << endl;
+    cout << "Time taken for N = " << N << ": " << total.count() << " microseconds" << endl;
+    cout << "Time taken for N = " << N << ": " << prop << " %" << endl;
+}
+
+int main() {
+    vector<int> sizes = {64, 128, 256, 512, 1024};
+
+    for (int N : sizes) {
+        matrixMultiplication(N);
+    }
+
+    return 0;
+}
+
+#QUESTION 2 PART 3
+#code for python:
+import numpy as np
+import time
+import matplotlib.pyplot as plt
+
+total_start=time.time()
+def matrix_multiplication(N):
+    
+    A = np.ones((N, N), dtype=int)
+    B = np.ones((N, N), dtype=int)
+    C = np.zeros((N, N), dtype=int)
+
+
+    meat_start = time.time()
+    for i in range(N):
+        for j in range(N):
+            for k in range(N):
+                C[i][j] += A[i][k] * B[k][j]
+    meat_end = time.time()
+    total_end = time.time()
+    print(f"Meat Time taken for N = {N}: {meat_end - meat_start} seconds")
+    print(f"Total Time taken for N = {N}: {total_end - total_start} seconds")
+    print(f"Proporation of Time taken for N = {N}: {((meat_end - meat_start)/(total_end - total_start))*100} %")
+
+sizes = [64, 128, 256, 512, 1024]
+execution_times = []
+
+for N in sizes:
+    matrix_multiplication(N)
+for N in sizes:
+        exec_time = matrix_multiplication(N)
+        execution_times.append(exec_time)
+        print(f"Time taken for N = {N}: {exec_time} seconds")
+plt.figure(figsize=(10, 6))
+plt.plot(sizes, execution_times, marker='o')
+plt.title('Matrix Multiplication Execution Time')
+plt.xlabel('Matrix Size (N)')
+plt.ylabel('Execution Time (seconds)')
+plt.grid(True)
+plt.show()
+
+#for double 
+import numpy as np
+import time
+import matplotlib.pyplot as plt
+
+total_start=time.time()
+def matrix_multiplication(N):
+    
+    A = np.ones((N, N), dtype=int)*2
+    B = np.ones((N, N), dtype=int)*2
+    C = np.zeros((N, N), dtype=int)*2
+
+
+    meat_start = time.time()
+    for i in range(N):
+        for j in range(N):
+            for k in range(N):
+                C[i][j] += A[i][k] * B[k][j]
+    meat_end = time.time()
+    total_end = time.time()
+    print(f"Meat Time taken for N = {N}: {meat_end - meat_start} seconds")
+    print(f"Total Time taken for N = {N}: {total_end - total_start} seconds")
+    print(f"Proporation of Time taken for N = {N}: {((meat_end - meat_start)/(total_end - total_start))*100} %")
+
+sizes = [64, 128, 256, 512, 1024]
+execution_times = []
+
+for N in sizes:
+    matrix_multiplication(N)
+for N in sizes:
+        exec_time = matrix_multiplication(N)
+        execution_times.append(exec_time)
+        print(f"Time taken for N = {N}: {exec_time} seconds")
+plt.figure(figsize=(10, 6))
+plt.plot(sizes, execution_times, marker='o')
+plt.title('Matrix Multiplication Execution Time')
+plt.xlabel('Matrix Size (N)')
+plt.ylabel('Execution Time (seconds)')
+plt.grid(True)
+plt.show()
+
+//code for C++ 
+//Code for C++ & time taken to calculate
+
+#include <iostream>
+#include <vector>
+#include <chrono>
+#include <matplotlibcpp.h>
+
+namespace plt = matplotlibcpp;
+using namespace std;
+using namespace std::chrono;
+auto total_start = high_resolution_clock::now();
+void matrixMultiplication(int N) {
+    
+    vector<vector<int>> A(N, vector<int>(N, 1));
+    vector<vector<int>> B(N, vector<int>(N, 1));
+    vector<vector<int>> C(N, vector<int>(N, 0));
+
+   
+    auto meat_start = high_resolution_clock::now();
+    for (int i = 0; i < N; ++i) {
+        for (int j = 0; j < N; ++j) {
+            for (int k = 0; k < N; ++k) {
+                C[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+    auto meat_stop = high_resolution_clock::now();
+    auto total_stop = high_resolution_clock::now();
+
+    auto meat = duration_cast<microseconds>(meat_stop - meat_start);
+    auto total = duration_cast<microseconds>(total_stop - total_start);
+    double prop = ((meat.count()/total.count())*100);
+
+
+    cout << "Time taken for N = " << N << ": " << meat.count() << " microseconds" << endl;
+    cout << "Time taken for N = " << N << ": " << total.count() << " microseconds" << endl;
+    cout << "Time taken for N = " << N << ": " << prop << " %" << endl;
+}
+
+int main() {
+    std::vector<int> sizes = {64, 128, 256, 512, 1024};
+    std::vector<double> execution_times;
+
+    for (int N : sizes) {
+        double meat_time, total_time;
+        matrixMultiplication(N, meat_time, total_time);
+        execution_times.push_back(total_time);
+    }
+
+    // Plotting the results
+    plt::figure_size(800, 600);
+    plt::plot(sizes, execution_times, "o-");
+    plt::title("Matrix Multiplication Execution Time");
+    plt::xlabel("Matrix Size (N)");
+    plt::ylabel("Execution Time (seconds)");
+    plt::grid(true);
+    plt::show();
+
+    return 0;
+}
+
+//FOR DOUBLE
+//Code for C++ & time taken to calculate
+
+#include <iostream>
+#include <vector>
+#include <chrono>
+#include <matplotlibcpp.h>
+
+namespace plt = matplotlibcpp;
+using namespace std;
+using namespace std::chrono;
+auto total_start = high_resolution_clock::now();
+void matrixMultiplication(int N) {
+    
+    vector<vector<double>> A(N, vector<double>(N, 1));
+    vector<vector<double>> B(N, vector<double>(N, 1));
+    vector<vector<double>> C(N, vector<double>(N, 0));
+
+   
+    auto meat_start = high_resolution_clock::now();
+    for (int i = 0; i < N; ++i) {
+        for (int j = 0; j < N; ++j) {
+            for (int k = 0; k < N; ++k) {
+                C[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+    auto meat_stop = high_resolution_clock::now();
+    auto total_stop = high_resolution_clock::now();
+
+    auto meat = duration_cast<microseconds>(meat_stop - meat_start);
+    auto total = duration_cast<microseconds>(total_stop - total_start);
+    double prop = ((meat.count()/total.count())*100);
+
+
+    cout << "Time taken for N = " << N << ": " << meat.count() << " microseconds" << endl;
+    cout << "Time taken for N = " << N << ": " << total.count() << " microseconds" << endl;
+    cout << "Time taken for N = " << N << ": " << prop << " %" << endl;
+}
+
+int main() {
+    std::vector<int> sizes = {64, 128, 256, 512, 1024};
+    std::vector<double> execution_times;
+
+    for (int N : sizes) {
+        double meat_time, total_time;
+        matrixMultiplication(N, meat_time, total_time);
+        execution_times.push_back(total_time);
+    }
+
+    // Plotting the results
+    plt::figure_size(800, 600);
+    plt::plot(sizes, execution_times, "o-");
+    plt::title("Matrix Multiplication Execution Time");
+    plt::xlabel("Matrix Size (N)");
+    plt::ylabel("Execution Time (seconds)");
+    plt::grid(true);
+    plt::show();
+
+    return 0;
+}
