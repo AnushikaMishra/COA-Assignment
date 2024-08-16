@@ -303,9 +303,6 @@ def matrix_multiplication(N):
                 C[i][j] += A[i][k] * B[k][j]
     meat_end = time.time()
     total_end = time.time()
-    print(f"Meat Time taken for N = {N}: {meat_end - meat_start} seconds")
-    print(f"Total Time taken for N = {N}: {total_end - total_start} seconds")
-    print(f"Proporation of Time taken for N = {N}: {((meat_end - meat_start)/(total_end - total_start))*100} %")
 
 sizes = [64, 128, 256, 512, 1024]
 execution_times = []
@@ -344,9 +341,6 @@ def matrix_multiplication(N):
                 C[i][j] += A[i][k] * B[k][j]
     meat_end = time.time()
     total_end = time.time()
-    print(f"Meat Time taken for N = {N}: {meat_end - meat_start} seconds")
-    print(f"Total Time taken for N = {N}: {total_end - total_start} seconds")
-    print(f"Proporation of Time taken for N = {N}: {((meat_end - meat_start)/(total_end - total_start))*100} %")
 
 sizes = [64, 128, 256, 512, 1024]
 execution_times = []
@@ -400,9 +394,6 @@ void matrixMultiplication(int N) {
     double prop = ((meat.count()/total.count())*100);
 
 
-    cout << "Time taken for N = " << N << ": " << meat.count() << " microseconds" << endl;
-    cout << "Time taken for N = " << N << ": " << total.count() << " microseconds" << endl;
-    cout << "Time taken for N = " << N << ": " << prop << " %" << endl;
 }
 
 int main() {
@@ -461,10 +452,6 @@ void matrixMultiplication(int N) {
     auto total = duration_cast<microseconds>(total_stop - total_start);
     double prop = ((meat.count()/total.count())*100);
 
-
-    cout << "Time taken for N = " << N << ": " << meat.count() << " microseconds" << endl;
-    cout << "Time taken for N = " << N << ": " << total.count() << " microseconds" << endl;
-    cout << "Time taken for N = " << N << ": " << prop << " %" << endl;
 }
 
 int main() {
