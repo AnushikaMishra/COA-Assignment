@@ -1,0 +1,22 @@
+.data
+    num1: .word 15 
+    result: .word 0 
+main:
+    lw $t0, num1 
+    lw $t1, 4($t0) 
+    move $t2, $t0 
+    move $t3, $t1 
+loop:
+   beq $t3, $zero, done             # If b (in $t3) is 0, GCD is in $t2
+   div $t4, $t2, $t3                # $hi = a / b and $hi= a % b
+   move $t2, $t3
+   move $t3, $hi                    # b = a % b
+   j loop 
+done:
+# Calculate LCM = (num1 * num2) / GCD
+
+   mul $t5, $t0, $t1              # $t5 = num1 * num2 (considering result in $t5 is only 32 bits)
+   div $t5, $t2                   # $t5 = (num1 * num2) / GCD
+   mflo $t6                       # Move the quotient (LCM) into $t6
+   sw $t6, result 
+   jr $ra 
