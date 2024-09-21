@@ -1,0 +1,36 @@
+data
+   numbers: .word 3, 5, 8, 12, 15, 18, 21, 23, 27, 30
+   target: .word 18
+   output: .word 0
+   iterations: .word 0
+   index: .word 0
+main:
+   lw $t0, target 
+   la $t1, numbers 
+   li $t2, 10                 # Set counter to 10 (size of the list)
+   li $t3, 0
+   li $t4, 0                 
+   lw $t6, 4($t0)
+   lw $t7, 8($t0) 
+   lw $t8, 12($t0)
+loop:
+   beq $t2, $zero, not_found       # If counter reaches 0, number not found
+   lw $t5, 0($t1) 
+   beq $t0, $t5, found 
+   addi $t1, $t1, 4
+   addi $t4, $t4, 1
+   addi $t3, $t3, 1 
+   addi $t2, $t2, -1 
+   j loop 
+found:
+    li $t6, 1
+    sw $t6, output            
+    move $t7, $t3
+    sw $t7, iterations
+    move $t8, $t4 
+    sw $t8, index 
+    jr $ra 
+not_found:
+    li $t6, 2
+    sw $t6, output 
+    jr $ra
