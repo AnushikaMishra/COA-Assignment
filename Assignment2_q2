@@ -1,0 +1,17 @@
+.data
+numbers: .word 10, 2, 30, 40, 57, 80, 70, 80, 9, 108, 11, 122, 138, 10, 150
+main:
+    lw $t2, numbers 
+    li $t0, 0 
+    li $t1, 0 
+loop: slti $t1, $t3, 15      # if i < 15, $t3=1, else $t3=0
+      beq $t3, $0, done      # if i>=15, then we stop the
+loop
+      lw $t5, 0($t2) 
+      add $t0, $t0, $t5      # sum += numbers[i]
+      lw $t2, 4($t2)         # store next element of arrayin t2
+      addi $t1, $t1, 1       # increment i by 1(i++)
+      j loop
+done:
+      div $t0, 15           # Divide the sum by 15, to get the average
+      jr $ra
