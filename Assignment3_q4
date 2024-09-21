@@ -1,0 +1,14 @@
+.data
+    num1: .word 6 # Initialize num1 to 6
+    num2: .word 4 # Initialize num2 to 4
+main:
+    li $t2, 0
+    li $t3, 0 
+    beq $t1, $zero, done
+loop:
+    beq $t3, $t1, done
+    add $t2, $t2, $t0 
+    addi $t3, $t3, 1
+    j loop 
+done:
+   jr $ra
