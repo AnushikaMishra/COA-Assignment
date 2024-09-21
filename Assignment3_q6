@@ -1,0 +1,19 @@
+.data
+    str: .asciiz "Hello, World!" # String to search
+    target: .byte 'l' # Character to search for
+main:
+    la $t0, str
+    lb $t1, target 
+    li $t2, 0 
+loop:
+    lb $t3, 0($t0)             # Load a byte from the string (current character)
+    beq $t3, $zero, exit       # If current character is null(end of string), go to not_found
+    beq $t1, $t3, found        # If target character is found, go to found
+    addi $t0, $t0, 1 
+    addi $t2, $t2, 1 
+    j loop
+found:
+    move $a0, $t2
+    jr $ra
+exit:
+   jr $ra
