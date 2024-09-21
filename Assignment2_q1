@@ -1,0 +1,13 @@
+.data
+num 1:      .half 1000
+num2:       .half 500
+result :    .half 0
+
+main: 
+      lh $t0, num1                           #load num1 into $t0
+      lh $t1, num2                           #load num2 into $t1
+      nor $t1, $t1, $zero                    #one’s complement
+      addi $t1, $t1, 1                       #add 1 to get 2’s complement
+      add $t2, $t0, $t1                      #num1+ 2’s complement of num2
+      sh $t2, result                         #result
+      jr $ra                                 #return
